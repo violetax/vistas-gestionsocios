@@ -1,0 +1,113 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Gestión BoxBox</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="../js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+<nav>
+    <label for="show-menu" class="show-menu">Show Menu</label>
+    <input type="checkbox" id="show-menu" role="button">
+    <ul id="menu">
+        <li><a href="home.html">Principal</a></li>
+        <li>
+            <a href="#">socios ￬</a>
+            <ul class="submenu">
+                <li><a href="socios/socios.html">Listado socios</a></li>
+                <!--
+                <li><a href="#"></a></li>
+                <li><a href="#">Illustration</a></li>
+                -->
+            </ul>
+        </li>
+        <li>
+            <a href="#">competidores ￬</a>
+            <ul class="submenu">
+                <li><a href="socios/competidores/competidores.html">Listado competidores</a></li>
+                <!--
+                <li><a href="#"></a></li>
+                <li><a href="#">Illustration</a></li>
+                -->
+            </ul>
+        </li>
+        <li>
+            <a href="#">veladas ￬</a>
+            <ul class="submenu">
+                <li><a href="veladas/veladas.html">Listado veladas</a></li>
+                <!--
+                <li><a href="#"></a></li>
+                <li><a href="#">Illustration</a></li>
+                -->
+            </ul>
+        </li>
+        <li>
+            <a href="#">combates ￬</a>
+            <ul class="submenu">
+                <li><a href="clientes/clientes.html">Listado Clientes</a></li>
+                <!--
+                <li><a href="#"></a></li>
+                <li><a href="#">Illustration</a></li>
+                -->
+            </ul>
+        </li>
+    </ul>
+</nav>
+<div id="wrapper">
+
+    <div id="page">
+        <header id="page-header">
+            <h1>Aplicación de Gestion de socios</h1>
+        </header>
+        <main id ="page-body">
+            Bienvenido a la aplicación de BoxBox para la gestión de socios.
+            <section id="home">
+                <header><h2>Bienvenido</h2></header>
+                <div>Bienvenidos y bienvenidas a BoxBox.</div>
+            </section>
+            <section id="contact">
+                <form id="contactForm" action="#" method="post" onsubmit="validarFormularioContacto()">
+
+
+                            <div>
+                                <label for="nombre">Nombre:</label>
+                                <input required type="text"  name="nombre" id="nombre" />
+                            </div>
+                            <div>
+                                <label for="nombre">Apellidos:</label>
+                                <input required type="text"  name="apellidos" id="apellidos" />
+                            </div>
+                            <div>
+                                <label for="nombre">DNI:</label>
+                                <input required type="text"  name="dni" id="dni" />
+                            </div>
+                            <div>
+                                <label for="nombre">Teléfono:</label>
+                                <input required type="text"  name="telefono" id="telefono" />
+                            </div>
+                            <input type="submit">
+
+
+                </form>
+            </section>
+        </main>
+        <footer id="page-footer">
+            <a href="#" target="_blank">Violetax S. Coop.</a>
+        </footer>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+<script src="../js/plugins.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

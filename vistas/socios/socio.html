@@ -1,0 +1,120 @@
+<nav>
+    <label for="show-menu" class="show-menu">Show Menu</label>
+    <input type="checkbox" id="show-menu" role="button">
+    <ul id="menu">
+        <li><a href="home.html">Principal</a></li>
+        <li>
+            <a href="#">socios ￬</a>
+            <ul class="submenu">
+                <li><a href="socios/socios.html">Listado socios</a></li>
+                <!--
+                <li><a href="#"></a></li>
+                <li><a href="#">Illustration</a></li>
+                -->
+            </ul>
+        </li>
+        <li>
+            <a href="#">competidores ￬</a>
+            <ul class="submenu">
+                <li><a href="socios/competidores/competidores.html">Listado competidores</a></li>
+                <!--
+                <li><a href="#"></a></li>
+                <li><a href="#">Illustration</a></li>
+                -->
+            </ul>
+        </li>
+        <li>
+            <a href="#">veladas ￬</a>
+            <ul class="submenu">
+                <li><a href="veladas/veladas.html">Listado veladas</a></li>
+                <!--
+                <li><a href="#"></a></li>
+                <li><a href="#">Illustration</a></li>
+                -->
+            </ul>
+        </li>
+        <li>
+            <a href="#">combates ￬</a>
+            <ul class="submenu">
+                <li><a href="combates/combates.html">Listado combates</a></li>
+                <!--
+                <li><a href="#"></a></li>
+                <li><a href="#">Illustration</a></li>
+                -->
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<section class="row">
+		<c:url var="sendUrl" value="/socios/save"/>
+		<c:url var="cancelUrl" value="/socios"/>
+
+	<form:form action="${sendUrl }" method="post" cssClass="form-horizontal" modelAttribute="socio">
+		<c:if test="${!empty socio}">
+			<form:hidden path="codigo"/>
+		</c:if>
+
+
+		<div class="form-group">
+			<form:label path="nombre" cssClass="control-label  col-xs-2">Nombre:</form:label>
+			<div class="col-xs-4">
+				<form:input type="text" path="nombre" cssClass="form-control" cssErrorClass="form-control text-danger"/>
+			</div>
+			<form:errors path="nombre" cssClass="text-danger col-xs-6" />
+		</div>
+
+		<div class="form-group">
+			<form:label path="apellidos" cssClass="control-label  col-xs-2">Apellidos:</form:label>
+			<div class="col-xs-4">
+				<form:input type="text" path="apellidos" cssClass="form-control" cssErrorClass="form-control text-danger"/>
+			</div>
+			<form:errors path="apellidos" cssClass="text-danger col-xs-6" />
+		</div>
+		<div class="form-group">
+			<form:label path="email" cssClass="control-label  col-xs-2">Email:</form:label>
+			<div class="col-xs-4">
+				<form:input type="text" path="email" cssClass="form-control" cssErrorClass="form-control text-danger"/>
+			</div>
+			<form:errors path="email" cssClass="text-danger col-xs-6" />
+		</div>
+		<div class="form-group">
+			<form:label path="telefono" cssClass="control-label  col-xs-2">Telefono:</form:label>
+			<div class="col-xs-4">
+				<form:input type="text" path="telefono" cssClass="form-control" cssErrorClass="form-control text-danger"/>
+			</div>
+			<form:errors path="telefono" cssClass="text-danger col-xs-6" />
+		</div>
+		<div class="form-group">
+			<form:label path="nrotarjeta" cssClass="control-label  col-xs-2">Número de tarjeta:</form:label>
+			<div class="col-xs-4">
+				<form:input type="text" path="nrotarjeta" cssClass="form-control" cssErrorClass="form-control text-danger"/>
+			</div>
+			<form:errors path="nrotarjeta" cssClass="text-danger col-xs-6" />
+		</div>
+		<div class="form-group">
+			<form:label path="competidor" cssClass="control-label  col-xs-2">Competidor:</form:label>
+			<div class="col-xs-4">
+				<form:checkbox path="competidor"/>
+			</div>
+			<form:errors path="competidor" cssClass="text-danger col-xs-6" />
+		</div>
+
+		<!--
+
+		<form:input type="text" path="competidor" cssClass="form-control" cssErrorClass="form-control text-danger"/>
+
+		<input type="checkbox" id="${socio.codigo}" value="${socio.competidor}">
+		 -->
+
+
+		<div class="form-group">
+			<div class="col-md-offset-3">
+				<button type="submit" class="btn btn-success">${formGuardar}</button>
+				<a class="btn btn-warning" href="${cancelUrl}">${formCancelar}</a>
+			</div>
+		</div>
+		<form:hidden path="activo"/>
+	</form:form>
+	</section>
+

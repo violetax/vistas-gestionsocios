@@ -1,0 +1,80 @@
+<nav>
+    <label for="show-menu" class="show-menu">Show Menu</label>
+    <input type="checkbox" id="show-menu" role="button">
+    <ul id="menu">
+        <li><a href="home.html">Principal</a></li>
+        <li>
+            <a href="#">socios ￬</a>
+            <ul class="submenu">
+                <li><a href="socios/socios.html">Listado socios</a></li>
+                <!--
+                <li><a href="#"></a></li>
+                <li><a href="#">Illustration</a></li>
+                -->
+            </ul>
+        </li>
+        <li>
+            <a href="#">competidores ￬</a>
+            <ul class="submenu">
+                <li><a href="socios/competidores/competidores.html">Listado competidores</a></li>
+                <!--
+                <li><a href="#"></a></li>
+                <li><a href="#">Illustration</a></li>
+                -->
+            </ul>
+        </li>
+        <li>
+            <a href="#">veladas ￬</a>
+            <ul class="submenu">
+                <li><a href="veladas/veladas.html">Listado veladas</a></li>
+                <!--
+                <li><a href="#"></a></li>
+                <li><a href="#">Illustration</a></li>
+                -->
+            </ul>
+        </li>
+        <li>
+            <a href="#">combates ￬</a>
+            <ul class="submenu">
+                <li><a href="combates/combates.html">Listado combates</a></li>
+                <!--
+                <li><a href="#"></a></li>
+                <li><a href="#">Illustration</a></li>
+                -->
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<section class="row">
+		<header class="col-xs-12"><h2 class="">${competidoresTitulo}</h2></header>
+		<div class="row">
+				<div class="col-xs-1 col-md-2 col-lg-1" style="display: inline-block; background-color:#87CEFA; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);">Nombre</div>
+				<div class="col-xs-1 col-md-2 col-lg-1" style="display: inline-block; background-color:#87CEFA; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);">Apellidos</div>
+			<!-- 	<div class="hidden-xs col-sm-2">Record</div>  -->
+		</div>
+
+			<c:choose>
+				<c:when test="${not empty listadoCompetidores}">
+				<c:forEach var="socio" items="${listadoCompetidores}">
+				<div class="row">
+					<div class="col-xs-1 col-md-2 col-lg-1">
+						${socio.nombre}
+					</div>
+					<div class="col-xs-1 col-md-2 col-lg-1">
+						${socio.apellidos}
+					</div>
+				<!--  	<div class="col-xs-2"> Record </div> -->
+				</div>
+				</c:forEach>
+
+				</c:when>
+					<c:otherwise><!-- Cuando la lista NO tiene datos -->
+						<div class="row"><span class="text-danger text-center">No se han encontrado competidores en la Base de Datos</span></div>
+					</c:otherwise>
+			</c:choose>
+
+	</section>
+
+
+
