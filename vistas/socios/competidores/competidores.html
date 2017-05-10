@@ -1,12 +1,28 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <script src="../../js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
 <nav>
     <label for="show-menu" class="show-menu">Show Menu</label>
     <input type="checkbox" id="show-menu" role="button">
     <ul id="menu">
-        <li><a href="home.html">Principal</a></li>
+        <li><a href="../../home.html">Principal</a></li>
         <li>
             <a href="#">socios ￬</a>
             <ul class="submenu">
-                <li><a href="socios/socios.html">Listado socios</a></li>
+                <li><a href="../socios.html">Listado socios</a></li>
                 <!--
                 <li><a href="#"></a></li>
                 <li><a href="#">Illustration</a></li>
@@ -16,7 +32,7 @@
         <li>
             <a href="#">competidores ￬</a>
             <ul class="submenu">
-                <li><a href="socios/competidores/competidores.html">Listado competidores</a></li>
+                <li><a href="competidores.html">Listado competidores</a></li>
                 <!--
                 <li><a href="#"></a></li>
                 <li><a href="#">Illustration</a></li>
@@ -26,7 +42,7 @@
         <li>
             <a href="#">veladas ￬</a>
             <ul class="submenu">
-                <li><a href="veladas/veladas.html">Listado veladas</a></li>
+                <li><a href="../veladas/veladas.html">Listado veladas</a></li>
                 <!--
                 <li><a href="#"></a></li>
                 <li><a href="#">Illustration</a></li>
@@ -36,7 +52,7 @@
         <li>
             <a href="#">combates ￬</a>
             <ul class="submenu">
-                <li><a href="combates/combates.html">Listado combates</a></li>
+                <li><a href="../combates/combates.html">Listado combates</a></li>
                 <!--
                 <li><a href="#"></a></li>
                 <li><a href="#">Illustration</a></li>
@@ -45,36 +61,43 @@
         </li>
     </ul>
 </nav>
+<main id ="page-body">
+    <a title="Editar" href="#">Editar competidor(s)</a>
+    <a title="Borrar" href="#">Borrar competidor(s)</a>
+    <section id="listadoElementos">
+        <header><h2>Listado de competidores</h2></header>
+        <table id="tablaElementos">
+            <thead>
+            <tr>
+                <th><input type="checkbox" name="borrartodos" id="borrartodos"/></th>
+                <th>Fecha</th>
+                <th>Competidor</th>
+                <th>Resultado</th>
+                <th>Comentarios</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
 
-<section class="row">
-		<header class="col-xs-12"><h2 class="">${competidoresTitulo}</h2></header>
-		<div class="row">
-				<div class="col-xs-1 col-md-2 col-lg-1" style="display: inline-block; background-color:#87CEFA; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);">Nombre</div>
-				<div class="col-xs-1 col-md-2 col-lg-1" style="display: inline-block; background-color:#87CEFA; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);">Apellidos</div>
-			<!-- 	<div class="hidden-xs col-sm-2">Record</div>  -->
-		</div>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="6"></td>
+            </tr>
+            </tfoot>
 
-			<c:choose>
-				<c:when test="${not empty listadoCompetidores}">
-				<c:forEach var="socio" items="${listadoCompetidores}">
-				<div class="row">
-					<div class="col-xs-1 col-md-2 col-lg-1">
-						${socio.nombre}
-					</div>
-					<div class="col-xs-1 col-md-2 col-lg-1">
-						${socio.apellidos}
-					</div>
-				<!--  	<div class="col-xs-2"> Record </div> -->
-				</div>
-				</c:forEach>
+        </table>
 
-				</c:when>
-					<c:otherwise><!-- Cuando la lista NO tiene datos -->
-						<div class="row"><span class="text-danger text-center">No se han encontrado competidores en la Base de Datos</span></div>
-					</c:otherwise>
-			</c:choose>
-
-	</section>
-
-
-
+    </section>
+</main>
+<footer id="page-footer">
+    <a href=#" target="_blank">Violetax S. Coop.</a>
+</footer>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+<script src="../../js/plugins.js"></script>
+<script src="../../js/main.js"></script>
+</body>
+</html>

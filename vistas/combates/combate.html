@@ -1,3 +1,19 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <script src="../../js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
 <nav>
     <label for="show-menu" class="show-menu">Show Menu</label>
     <input type="checkbox" id="show-menu" role="button">
@@ -45,68 +61,43 @@
         </li>
     </ul>
 </nav>
+<main id ="page-body">
+    <a title="Editar" href="#">Editar combate</a>
+    <a title="Borrar" href="#">Borrar combate</a>
+    <section id="elemento">
+        <header><h2>Combate</h2></header>
+        <table id="tablaElemento">
+            <thead>
+            <tr>
+                <th><input type="checkbox" name="" id=""/></th>
+                <th>Fecha</th>
+                <th>Competidor</th>
+                <th>Resultado</th>
+                <th>Comentarios</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
 
-<spring:message var="men" code="formCrear" text="nombre" />
-<c:if test="${curso.codigo > 0}" >
-	<spring:message var="men"  code="formEditar" text="nombre" />
-</c:if>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="6"></td>
+            </tr>
+            </tfoot>
 
+        </table>
 
-<section class="row">
-		<c:url var="sendUrl" value="/combates/save"/>
-		<c:url var="cancelUrl" value="/combates"/>
-
-	<form:form action="${sendUrl }" method="post" cssClass="form-horizontal" modelAttribute="combate">
-		<c:if test="${!empty combate}">
-			<form:hidden path="codigo"/>
-		</c:if>
-
-		<div class="form-group">
-			<form:label path="velada" cssClass="control-label  col-xs-2">Velada:</form:label>
-				<div class="col-xs-4">
-					<form:select cssClass="form-control" path="velada">
-			            <form:option value="0" label="Elige velada"/>
-						<form:options items="${listadoVeladas}" itemValue="codigo" itemLabel="identificador" />
-			        </form:select>
-			     </div>
-			<form:errors path="velada" cssClass="text-danger col-xs-6"></form:errors>
-		</div>
-
-		<div class="form-group">
-			<form:label cssClass="control-label col-xs-2" path="socio">Competidor:</form:label>
-				<div class="col-xs-4">
-					<form:select cssClass="form-control" path="socio">
-			            <form:option value="0" label="Elige un competidor"/>
-						<form:options items="${listadoCompetidores}" itemValue="codigo" itemLabel="identificador" />
-			        </form:select>
-			     </div>
-		   	 	 <form:errors cssClass="text-danger col-xs-6"  path="socio"/>
-			</div>
-
-		<div class="form-group">
-			<form:label cssClass="control-label col-xs-2" path="resultado">Resultado:</form:label>
-			<div class="col-xs-4">
-				<form:select cssClass="form-control" path="resultado">
-			        <form:option value="0" label="Señala el resultado"/>
-					<form:options items="${listaResultados}" itemValue="resultado" itemLabel="resultado" />
-			    </form:select>
-			</div>
-			<form:errors path="resultado" cssClass="text-danger col-xs-6"></form:errors>
-		</div>
-
-		<div class="form-group">
-			<form:label path="comentarios" cssClass="control-label  col-xs-2">Comentarios</form:label>
-				<div class="col-xs-4">
-					<form:input type="text" path="comentarios" cssClass="form-control" cssErrorClass="form-control text-danger"/>
-				</div>
-			<form:errors path="comentarios" cssClass="text-danger col-xs-6"></form:errors>
-		</div>
-		<div class="form-group">
-			<div class="col-md-offset-3">
-				<button type="submit" class="btn btn-success">${formGuardar}</button>
-				<a class="btn btn-warning" href="${cancelUrl}">${formCancelar}</a>
-			</div>
-		</div>
-		<form:hidden path="activo"/>
-	</form:form>
-	</section>
+    </section>
+</main>
+<footer id="page-footer">
+    <a href=#" target="_blank">Violetax S. Coop.</a>
+</footer>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+<script src="../../js/plugins.js"></script>
+<script src="../../js/main.js"></script>
+</body>
+</html>

@@ -1,12 +1,28 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <script src="../../js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
 <nav>
     <label for="show-menu" class="show-menu">Show Menu</label>
     <input type="checkbox" id="show-menu" role="button">
     <ul id="menu">
-        <li><a href="home.html">Principal</a></li>
+        <li><a href="../home.html">Principal</a></li>
         <li>
             <a href="#">socios ￬</a>
             <ul class="submenu">
-                <li><a href="socios/socios.html">Listado socios</a></li>
+                <li><a href="../socios/socios.html">Listado socios</a></li>
                 <!--
                 <li><a href="#"></a></li>
                 <li><a href="#">Illustration</a></li>
@@ -16,7 +32,7 @@
         <li>
             <a href="#">competidores ￬</a>
             <ul class="submenu">
-                <li><a href="socios/competidores/competidores.html">Listado competidores</a></li>
+                <li><a href="../socios/competidores/competidores.html">Listado competidores</a></li>
                 <!--
                 <li><a href="#"></a></li>
                 <li><a href="#">Illustration</a></li>
@@ -26,7 +42,7 @@
         <li>
             <a href="#">veladas ￬</a>
             <ul class="submenu">
-                <li><a href="veladas/veladas.html">Listado veladas</a></li>
+                <li><a href="veladas.html">Listado veladas</a></li>
                 <!--
                 <li><a href="#"></a></li>
                 <li><a href="#">Illustration</a></li>
@@ -36,7 +52,7 @@
         <li>
             <a href="#">combates ￬</a>
             <ul class="submenu">
-                <li><a href="combates/combates.html">Listado combates</a></li>
+                <li><a href="../combates/combates.html">Listado combates</a></li>
                 <!--
                 <li><a href="#"></a></li>
                 <li><a href="#">Illustration</a></li>
@@ -45,50 +61,44 @@
         </li>
     </ul>
 </nav>
+<main id ="page-body">
+    <a title="Crear" href="#">Crear uno nuevo</a>
+    <a title="Editar" href="#">Editar velada(s)</a>
+    <a title="Borrar" href="#">Borrar velada(s)</a>
+    <section id="listadoElementos">
+        <header><h2>Listado de veladas</h2></header>
+        <table id="tablaElementos">
+            <thead>
+            <tr>
+                <th><input type="checkbox" name="borrartodos" id="borrartodos"/></th>
+                <th>Fecha</th>
+                <th>Competidor</th>
+                <th>Resultado</th>
+                <th>Comentarios</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
 
-<section class="row">
-		<header class="col-xs-12"><h2 class="">${veladasTitulo }</h2></header>
-	<div class="row">
-		<sec:authorize access="isAuthenticated()">
-			<div class="col-xs-5 col-md-10 col-lg-5">
-				<a class="btn btn-info" href="<c:url value='/veladas/addVelada'/>">Introducir velada</a>
-			</div>
-		</sec:authorize>
-	</div>
-			<div class="row">
-				<div class="col-xs-1 col-md-2 col-lg-1" style="display: inline-block; background-color:#87CEFA; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);">Fecha</div>
-				<div class="col-xs-1 col-md-2 col-lg-1" style="display: inline-block; background-color:#87CEFA; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);">Lugar</div>
-				<div class="col-xs-1 col-md-2 col-lg-1" style="display: inline-block; background-color:#87CEFA; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);">Provincia</div>
-				<div class="col-xs-3 col-md-6 col-lg-3" style="display: inline-block; background-color:#87CEFA; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);">Comentarios</div>
-			</div>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="6"></td>
+            </tr>
+            </tfoot>
 
-			<c:choose>
-				<c:when test="${not empty listadoVeladas}">
-					<c:forEach var="velada" items="${listadoVeladas}">
-					<div class="row">
-						<div class="col-xs-1 col-md-2 col-lg-1">
-							<fmt:formatDate pattern="dd/MM/yyyy" value="${velada.fecha}" />
-						</div>
-						<div class="col-xs-1 col-md-2 col-lg-1">${velada.lugar}</div>
-						<div class="col-xs-1 col-md-2 col-lg-1">${velada.provincia}</div>
-						<div class="col-xs-3 col-md-6 col-lg-3">${velada.comentarios}</div>
+        </table>
 
-						<sec:authorize access="isAuthenticated()">
-							<div class="col-xs-1 col-md-2 col-lg-1">
-								<a class="btn btn-success" href="<c:url value='/veladas/editVelada/${velada.codigo}'/>">Editar</a>
-							</div>
-							<div class="col-xs-1 col-md-2 col-lg-1">
-								<a class="btn btn-danger" href="<c:url value='/veladas/deleteVelada/${velada.codigo}'/>">Borrar</a>
-							</div>
-						</sec:authorize>
-					</div>
-					</c:forEach>
-				</c:when>
-				<c:otherwise><!-- Cuando la lista NO tiene datos -->
-					<div class="row"><span class="text-danger text-center">No se han encontrado veladas en la Base de Datos</span></div>
-				</c:otherwise>
-			</c:choose>
-
-	</section>
-
-
+    </section>
+</main>
+<footer id="page-footer">
+    <a href=#" target="_blank">Violetax S. Coop.</a>
+</footer>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+<script src="../../js/plugins.js"></script>
+<script src="../../js/main.js"></script>
+</body>
+</html>
