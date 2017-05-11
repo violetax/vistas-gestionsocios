@@ -64,30 +64,35 @@
 <main id ="page-body">
     <a title="Editar" href="#">Editar combate</a>
     <a title="Borrar" href="#">Borrar combate</a>
-    <section id="elemento">
-        <header><h2>Combate</h2></header>
-        <table id="tablaElemento">
-            <thead>
-            <tr>
-                <th><input type="checkbox" name="" id=""/></th>
-                <th>Fecha</th>
-                <th>Competidor</th>
-                <th>Resultado</th>
-                <th>Comentarios</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-            <tfoot>
-            <tr>
-                <td colspan="6"></td>
-            </tr>
-            </tfoot>
-
-        </table>
-
+    <section class="flexcontainer elemento"  id="combate">
+        <header><h2>Formulario de combate</h2></header>
+        <div class="flexcontainer">
+            <form class="flexcontainer" id="boutForm" action="#" method="post">
+                <div class="flexcontainer">
+                    <label for="competidor">Competidor</label>
+                    <input type="text" name="competidor" id="competidor"/>
+                    <div class="text-error"></div>
+                </div>
+                <div class="flexcontainer">
+                    <label for="resultado">Resultado</label>
+                    <input type="text" name="resultado" id="resultado"/>
+                    <div class="text-error"></div>
+                </div>
+                <div class="flexcontainer">
+                    <label for="velada">Velada</label>
+                    <input type="text" name="velada" id="velada"/>
+                    <div class="text-error"></div>
+                </div>
+                <div class="flexcontainer">
+                    <label for="comentarios">Comentarios</label>
+                    <input type="text" name="comentarios" id="comentarios"/>
+                    <div class="text-error"></div>
+                </div>
+                <div class="flexcontainer">
+                    <button class="">Enviar</button>
+                </div>
+            </form>
+        </div>
     </section>
 </main>
 <footer id="page-footer">

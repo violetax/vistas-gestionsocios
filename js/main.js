@@ -1,8 +1,10 @@
 var elementos = [1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+var resultados = [VKO,VKT,VPT,VDU,VDM,VDD,DKO,DKT,DPT,DDU,DDM,DDD,NDU,NDM,NDD];
 $.noConflict();
 jQuery(document).ready(function($) {
     // Code that uses jQuery's $ can follow here.
     $("#contactForm").on("submit",validarFormularioContacto);
+    $("#boutForm").on("submit",validarFormularioCombate);
     $("#borrartodos").click(function (event) {
         //attr ---> cambios de atributos
         // prop --> propiedades
@@ -16,8 +18,6 @@ jQuery(document).ready(function($) {
         }else{
             $("tbody input[type=checkbox]").prop("checked",false);
         }
-
-
     });
 
     function validarFormularioContacto(){
@@ -105,4 +105,76 @@ function validarDni(dni) {
         }
     }
     return valido;
+}
+
+function validarFormularioCombate() {
+    //recoger los valores de la vista
+    var pcompetidor = $("#competidor").val();
+    var presultado = $("#resultado").val();
+    var pvelada = $("#velada").val();
+    var pcomentarios = $("#comentarios").val();
+    var valido = false;
+    //evaluarlos
+    var competidorValido= validarCompetidor(pcompetidor); //en funcion de si estan bien o mal o se envia o no
+    var resultadoValido = validarResultado(presultado);
+    var veladaValido = validarVelada(pvelada);
+    var comentariosValido = validarComentarios(pcomentarios);
+    $("#competidor").siblings("div.text-error").text("");
+    $("#resultado").siblings("div.text-error").text("");
+    $("#velada").siblings("div.text-error").text("");
+    $("#comentarios").siblings("div.text-error").text("");
+    if(competidorValido&&resultadoValido&&veladaValido&&comentariosValido){
+        // $("#contactForm").submit();//se envia el Formulario(Consumir REST)
+        valido = true;
+    }else {
+        //mostar mensaje de error
+        if(!competidorValido){
+            $("#competidor").siblings("div.text-error").text("El competidor no se reconoce.");
+        }
+        if(!resultadoValido){
+            $("#resultado").siblings("div.text-error").text("El resultado no se reconoce.");
+        }
+        if(!veladaValido){
+            $("#velada").siblings("div.text-error").text("La velada no se reconoce.");
+        }
+        if(!comentariosValido){
+            $("#comentarios").siblings("div.text-error").text("Los comentarios no son válidos.");
+        }
+        //text y html
+
+        return false;
+    }
+}
+
+function validarCompetidor(pcompetidor) {
+    if (elementos.length > 0) {
+        return true;
+    }
+}
+function validarResultado(presultado) {
+    if (resultados.length > 0) {
+        for (var r in resultados) {
+            console.log(r);
+            if (presultado == r) {
+                // var texto = "<tr><td><input type='checkbox' value='" + e + "'></td></tr>";
+                // $("#tablaElementos tbody").append(texto);
+                return true;
+                console.log("All good! :)");
+            } else {
+                // $("#listadoElementos").text("No se han encontrado elementos.")
+                return false;
+                console.log("All wrong! :(");
+            }
+        }
+    }
+}
+function validarVelada() {
+    if (elementos.length > 0) {
+        return true;
+    }
+}
+function validarComentarios() {
+    if (elementos.length > 0) {
+        return true;
+    }
 }
