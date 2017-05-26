@@ -1,0 +1,24 @@
+#!/bin/bash
+
+npm install gulp
+npm install babelify
+npm install gulp-concat
+npm install browserify
+npm install vinyl-source-stream
+npm install vinyl-buffer
+npm install gulp-uglify
+npm install --save-dev babel-cli
+npm install babel-preset-env --save-dev
+npm install jquery --save-dev
+npm install bootstrap@3
+npm install jshint
+
+
+
+npm install end-of-stream
+npm install gulp-clean-css
+#npm install gulp-clean-js
+npm install sequencify
+npm install stream-consume
+npm install vinyl-buffer
+npm install vinyl-sourcemaps-apply
