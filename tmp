@@ -1,0 +1,33 @@
+asiertek@gmail.com  692706229
+
+1.-Crear la funcion que maneje el evento ONCLICK de el boton guardar
+2.-Añadir la funcion serializaObject al nucleo de jQuery
+3.-Crear una funcion en alumnos.js para crear el alumno, que va a llamar al servicio de alumno (parecido a lo de renderizar())
+4.-En la funcion de el punto 1 llamar a esta nueva funcion y despues de que todo haya ido OK cerrar el popup modal.
+
+let $filaCabecera = $("<tr>")
+        .append($("<th/>",{
+            html: "<input type='checkbox' name='borrartodos' id='borrartodos'/>"
+        })).append($("<th/>",{
+            text: "Nombre"
+        })).append($("<th/>",{
+            text: "Apellidos"
+        })).append($("<th/>",{
+            text: "DNI"
+        })).append($("<th/>",{
+            text: "Email"
+        })).append($("<th/>"));
+
+let $tabla = $("<table/>",{
+        "data-table" : "alumnos",
+        id: "tablaAlumnos",
+        class: "rwd-table"
+}).append(
+    $("<thead/>")
+        .append($filaCabecera)
+);
+
+$("#contenedor").append($tabla);
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
