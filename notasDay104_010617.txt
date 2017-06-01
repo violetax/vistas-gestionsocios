@@ -1,0 +1,228 @@
+##########################
+Including jQuery
+
+Babel
+Babel is a next generation JavaScript compiler:
+
+	import $ from "jquery"; 
+
+Browserify/Webpack
+In the script, including jQuery will usually look like this:
+
+	var $ = require("jquery");
+
+#############################
+
+window.jQuery = window.$ = $; // Exposes jQuery to the global object
+
+ the $ in the code above is just a shorter, more convenient name for the jQuery function
+
+WHEN YOU CALL THE $() FUNCTION AND PASS A SELECTOR TO IT, YOU CREATE A NEW JQUERY OBJECT. Of course, in JavaScript, functions are objects too, so that means that $ (and jQuery, of course) has properties and methods, too.
+
+ you can refer to the $.support property for information on what the current browser environment supports, and you use the $.ajax method to make an AJAX request.
+
+ jQuery (when you include it) creates functions at window.$ and window.jquery. Then it sets $ equal to both of those to $ for convenience.
+
+Once you include the script on the page it will create the objects jQuery and $ on the global context (window). It is not native.
+
+These
+
+_jQuery = window.jQuery,    
+_$ = window.$,
+Are internal mappings in case of overwrite. You can use the function .noConflict to restore the previous value of window.$ preventing conflicts with prototype and other libraries
+
+
+What’s $, anyway?
+The jQuery library provides the jQuery function, which lets you select elements using CSS selectors.
+
+var listItems = jQuery( 'li' );
+
+	... after window.jQuery = window.$ = $; ...
+
+var listItems = $( 'li' );
+
+#################################################
+
+ensure that the page is in a state where it's ready to be manipulated. With jQuery, we accomplish this by putting our code in a function, and then passing that function to $(document).ready()
+
+We're using $(document) to create a jQuery object from our page's document, and then calling the .ready() function on that object, passing it the function we want to execute.
+
+Since this is something you'll find yourself doing a lot, there's a shorthand method for this if you prefer — the $()
+
+$( document ).ready(function() { == $(function() {
+
+###################################################
+
+ any selection you make will only contain elements that existed in the page when you made the selection
+
+WAYS TO CREATE A JQUERY OBJECT
+
+//  passing a simple selector to $()
+
+// create a jQuery object from a DOM element
+$( document.body.children[0] );
+
+// create a jQuery object from a list of DOM elements
+$( [ window, document ] );
+
+// make a selection in the context of a DOM element
+var firstBodyChild = document.body.children[0];
+$( 'li', firstBodyChild );
+
+// make a selection within a previous selection
+var paragraph = $( 'p' );
+$( 'a', paragraph );
+
+$() function always returns a jQuery object, and an object is always truthy, you'll need to test the contents of your selection to determine whether anything was found.
+
+```<span class="caution">caution</span> broken code
+if ( $( '#nonexistent' ) ) {
+  // Wrong! This code will always run!
+}
+
+if ( $( '#nonexistent' ).length > 0 ) {
+  // Correct! This code will only run if there's an element in your page
+  // with an ID of 'nonexistent'
+}
+
+We can shorten our check even further if we remember that 0 is a falsy value:
+
+if ( $( '#nonexistent' ).length ) {
+  // This code will only run if there's a matching element
+}
+
+###########################################
+
+WORKING WITH OBJECTS
+
+The $ function has one last role: creating new elements. If you pass an HTML snippet to $(), it will create a new element in memory — that is, the element will be created, but it won't be placed on the page until you place it on the page.
+
+$( '<p class="greet">Hello!</p>' ); // creates a new <p> with content and class
+
+$( '<p>', {
+  html: 'Hello!',
+  'class': 'greet'
+});
+
+There are many methods you can call once you've made a selection. These methods generally fall into two categories: getters and setters. Getters retrieve a piece of information from the selection, and setters alter the selection in some way. In almost all cases, getters operate only on the first element in a selection (.text() is a notable exception); setters operate on all elements in a selection, using what's known as implicit iteration.
+
+when you want to do something to all of the elements in a selection, you don't have to call a setter method on every item in your selection — you just call the method on the selection itself, and jQuery iterates over the elements for you.
+
+You can also pass a function to jQuery's setter methods. This function's return value is used as the new value, and it receives two arguments: the index of the element in the selection, and the old value .
+
+
+ we must wrap the class property in quotation marks, as class is a reserved word in JavaScript, and failing to quote it will cause errors in some browsers. !!!!!!!!!!!!!!!!!!!!!
+
+ determine whether a selection meets certain criteria using the .is() method. 
+
+$( 'li' ).each(function( index, elem ) {
+  // this: the current, raw DOM element
+  // index: the current element's index in the selection
+  // elem: the current, raw DOM element (same as this)
+  $( elem ).prepend( '<b>' + index + ': </b>' );
+});
+
+ access to the current raw DOM element in two ways: as this and as elem.
+
+this is a special keyword in JavaScript, referring to the object that is the current context of the function. In jQuery, this almost always refers to the raw DOM element on which the function is currently operating. 
+
+Chaining, every setter method in jQuery returns the selection on which it was called.
+
+
+######################################3
+
+Traversing & Manipulating
+
+// filter the selection to only items with a class of 'special'
+var special = listItems.filter( '.special' );
+
+// filter the selection to only items without a class of 'special'
+var notSpecial = listItems.not( '.special' );
+
+// filter the selection to only items that contain a span
+var hasSpans = listItems.has( 'span' );
+
+// get the first list item on the page
+var listItem = $( 'li' ).first(); // also: .last()
+
+// get the siblings of the list item
+var siblings = listItem.siblings();
+
+// get the next sibling of the list item
+var nextSibling = listItem.next(); // also: .prev()
+
+// get the list item's parent
+var list = listItem.parent();
+
+// get the list items that are immediate children of the list
+var listItems = list.children();
+
+// get ALL list items in the list, including nested ones
+var allListItems = list.find( 'li' );
+
+// find all ancestors of the list item that have a class of "module"
+var modules = listItem.parents( '.module' );
+
+// find the closest ancestor of the list item that has a class of "module"
+var module = listItem.closest( '.module' );
+
+// add to an existing selection by using the .add() method. 
+
+var listAndListItems = list.add( '#my-unordered-list li' );
+
+
+Changing other attributes
+
+$( 'a' ).attr( 'href', function(index, value) {
+  return value + '?special=true';
+});
+
+like other setter methods, this function receives two arguments: the index of the element on which it's operating, and the original value of the attribute.
+
+
+#################################
+
+
+Placing elements in the document
+
+calling a method on the element(s) you want to place, or by calling a method on the element relative to which you want to place it.
+
+
+move the first list item in a list to the end of the list:
+
+
+var listItem = $( '#my-unordered-list li' ).first();
+listItem.appendTo( '#my-unordered-list' );
+
+var listItem = $( '#my-unordered-list li' ).first();
+$( '#my-unordered-list' ).append( listItem );
+
+You could insert the list item after the last list item by calling .insertAfter() on the list item that you want to move:
+
+var listItems = $( '#my-unordered-list li' );
+listItems.first().insertAfter( listItems.last() );
+
+also insert the list item after the last list item by calling .after() on the last list item:
+
+var listItems = $( '#my-unordered-list li' );
+listItems.last().after( listItems.first() );
+
+#######################################333
+Copying elements
+
+ the copy is only in memory — you will need to place it in the document yourself.
+
+You can manipulate the cloned element or elements before placing them into the document.
+
+
+##########################33
+
+Removing elements
+
+Elements removed with .detach() will retain their event handlers; you can re-add them to the document with .appendTo() or another DOM insertion method.
+
+the .replaceWith()
+like with .remove(), all event handlers are unbound from the replaced elements.
+
+
+
